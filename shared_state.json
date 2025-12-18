@@ -2,7 +2,9 @@
   "project_info": {
     "name": "CheftAi Android",
     "target": "Android (Flutter/FastAPI/Gemini)",
-    "status": "Initialization"
+    "status": "Initialization",
+    "git_repo": "https://github.com/DuyNhat9/cheftai.git",
+    "version": "0.1.0"
   },
   "shared_memory": {
     "architecture": "Clean Architecture / MVVM",
