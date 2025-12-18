@@ -1,0 +1,65 @@
+{
+  "project_info": {
+    "name": "CheftAi Android",
+    "target": "Android (Flutter/FastAPI/Gemini)",
+    "status": "Initialization"
+  },
+  "shared_memory": {
+    "architecture": "Clean Architecture / MVVM",
+    "ui_theme": "Dark Mode (Material You)",
+    "active_constants": {},
+    "last_build_status": "Not started"
+  },
+  "agents": {
+    "Architect": {
+      "status": "Working",
+      "current_task": "Setting up infrastructure"
+    },
+    "UI_UX_Dev": {
+      "status": "Idle",
+      "current_task": null
+    },
+    "Backend_AI_Dev": {
+      "status": "Idle",
+      "current_task": null
+    }
+  },
+  "task_board": [
+    {
+      "id": "T001",
+      "title": "Khởi tạo cấu trúc Shared State và Agent Roles",
+      "owner": "Architect",
+      "status": "COMPLETED"
+    },
+    {
+      "id": "T002",
+      "title": "Phác thảo cấu trúc thư mục Flutter Android chuẩn",
+      "owner": "Architect",
+      "status": "PENDING"
+    },
+    {
+      "id": "T003",
+      "title": "Backend: Viết hàm searchByCalories trong RecipeRepository",
+      "owner": "Backend_AI_Dev",
+      "status": "PENDING",
+      "dependency": "T002",
+      "description": "Dùng MCP đọc schema.md để lấy table structure"
+    },
+    {
+      "id": "T004",
+      "title": "UI: Build SearchScreen với Jetpack Compose",
+      "owner": "UI_UX_Dev",
+      "status": "PENDING",
+      "dependency": "T003",
+      "description": "Kết nối với hàm searchByCalories từ Backend"
+    },
+    {
+      "id": "T005",
+      "title": "Testing: Viết unit tests cho searchByCalories",
+      "owner": "Backend_AI_Dev",
+      "status": "PENDING",
+      "dependency": "T003",
+      "description": "Dùng MCP run build.gradle để check compile"
+    }
+  ]
+}
