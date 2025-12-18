@@ -10,7 +10,13 @@
     "architecture": "Clean Architecture / MVVM",
     "ui_theme": "Dark Mode (Material You)",
     "active_constants": {},
-    "last_build_status": "Not started"
+    "last_build_status": "Not started",
+    "project_structure": {
+      "mcp_dir": ".mcp/",
+      "docs_dir": "docs/",
+      "scripts_dir": "scripts/",
+      "flutter_dir": "lib/ (coming soon)"
+    }
   },
   "agents": {
     "Architect": {
@@ -37,7 +43,7 @@
       "id": "T002",
       "title": "Phác thảo cấu trúc thư mục Flutter Android chuẩn",
       "owner": "Architect",
-      "status": "PENDING"
+      "status": "IN_PROGRESS"
     },
     {
       "id": "T003",
