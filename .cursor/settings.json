@@ -1,0 +1,14 @@
+{
+  "// Auto-Accept Settings for Multi-Agent Workflow": "Copy các settings này vào Cursor Settings JSON",
+  "cursor.chat.autoApplySingleEdit": true,
+  "cursor.chat.autoApplyMultipleEdits": false,
+  "cursor.chat.autoApplyDelay": 1000,
+  "// Per-file type auto-accept": "Auto-accept cho Dart và Python files",
+  "[dart]": {
+    "cursor.chat.autoApply": true
+  },
+  "[python]": {
+    "cursor.chat.autoApply": true
+  },
+  "// Instructions": "Mở Settings JSON (Cmd/Ctrl + Shift + P → 'Preferences: Open User Settings (JSON)') và paste các settings trên"
+}

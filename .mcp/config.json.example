@@ -1,0 +1,16 @@
+{
+  "cursor_cloud_api": {
+    "enabled": false,
+    "api_key": "your_api_key_here",
+    "api_base": "https://api.cursor.com/v0",
+    "poll_interval": 10,
+    "max_poll_attempts": 60
+  },
+  "local_fallback": {
+    "enabled": true,
+    "auto_open_windows": false
+  }
+}
+
+
+

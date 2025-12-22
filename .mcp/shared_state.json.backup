@@ -32,8 +32,8 @@
   },
   "agents": {
     "Architect": {
-      "status": "Idle",
-      "current_task": null,
+      "status": "Working",
+      "current_task": "A200 - Architect: Kiểm tra lại flow Start → Trigger → Auto-submit",
       "model": "Sonnet 4.5",
       "role": "Planner - Lên kế hoạch và chia task",
       "worktree_id": "hng",
@@ -46,12 +46,12 @@
         "lines_added": 1495,
         "lines_deleted": 0,
         "recent_commits_count": 0,
-        "last_analyzed": "2025-12-22T16:34:26.386735"
+        "last_analyzed": "2025-12-22T16:00:48.720407"
       }
     },
     "Backend_AI_Dev": {
-      "status": "Idle",
-      "current_task": null,
+      "status": "Working",
+      "current_task": "B200 - Backend: Rà soát API /api/messages và /api/auto-submit",
       "model": "GPT-5.1 Codex High Fast",
       "role": "Backend - FastAPI, Gemini, Firestore",
       "worktree_id": "agd",
@@ -64,12 +64,12 @@
         "lines_added": 345,
         "lines_deleted": 0,
         "recent_commits_count": 0,
-        "last_analyzed": "2025-12-22T16:34:26.451407"
+        "last_analyzed": "2025-12-22T16:00:48.786022"
       }
     },
     "UI_UX_Dev": {
-      "status": "Idle",
-      "current_task": null,
+      "status": "Working",
+      "current_task": "U200 - UI: Kiểm tra UX nút Start cho từng agent",
       "model": "claude-4.1-opus",
       "role": "UI/UX - Flutter, Material Design",
       "worktree_id": "cqd",
@@ -78,16 +78,16 @@
       "analytics": {
         "has_uncommitted_changes": true,
         "modified_files": 4,
-        "new_files": 90,
+        "new_files": 89,
         "lines_added": 345,
         "lines_deleted": 0,
         "recent_commits_count": 0,
-        "last_analyzed": "2025-12-22T16:34:26.524421"
+        "last_analyzed": "2025-12-22T16:00:48.852287"
       }
     },
     "Testing_QA": {
-      "status": "Idle",
-      "current_task": null,
+      "status": "Working",
+      "current_task": "Q200 - QA: Viết checklist regression cho flow Start Agent",
       "model": "o3 Pro",
       "role": "QA - Tests, Code quality",
       "worktree_id": "ntw",
@@ -118,7 +118,7 @@
         "lines_added": 375,
         "lines_deleted": 0,
         "recent_commits_count": 0,
-        "last_analyzed": "2025-12-22T16:34:26.599989"
+        "last_analyzed": "2025-12-22T16:00:48.913924"
       }
     },
     "Gemini_3_Pro": {
@@ -134,7 +134,7 @@
         "lines_added": 1,
         "lines_deleted": 0,
         "recent_commits_count": 0,
-        "last_analyzed": "2025-12-22T16:34:26.708511"
+        "last_analyzed": "2025-12-22T16:00:49.023366"
       }
     }
   },
@@ -218,68 +218,20 @@
       "owner": "Testing_QA",
       "status": "COMPLETED",
       "description": "Định nghĩa các bước test chuẩn (API, dashboard, Cursor chat) để verify rằng mỗi agent nhận đúng task khi bấm Start."
-    },
-    {
-      "id": "DEMO_ARCH",
-      "title": "Demo: Architect plan auto-submit flow",
-      "owner": "Architect",
-      "status": "PENDING",
-      "description": "Demo task for Start/Trigger auto-submit",
-      "created_at": "2025-12-22T16:30:30"
-    },
-    {
-      "id": "DEMO_BACK",
-      "title": "Demo: Backend trigger + auto-submit",
-      "owner": "Backend_AI_Dev",
-      "status": "PENDING",
-      "description": "Demo task for Start/Trigger auto-submit",
-      "created_at": "2025-12-22T16:30:30"
-    },
-    {
-      "id": "DEMO_UI",
-      "title": "Demo: UI dashboard UX check",
-      "owner": "UI_UX_Dev",
-      "status": "PENDING",
-      "description": "Demo task for Start/Trigger auto-submit",
-      "created_at": "2025-12-22T16:30:30"
-    },
-    {
-      "id": "DEMO_QA",
-      "title": "Demo: QA regression Start flow",
-      "owner": "Testing_QA",
-      "status": "PENDING",
-      "description": "Demo task for Start/Trigger auto-submit",
-      "created_at": "2025-12-22T16:30:30"
-    },
-    {
-      "id": "DEMO_SUP",
-      "title": "Demo: Supervisor monitor & summarize",
-      "owner": "Supervisor",
-      "status": "PENDING",
-      "description": "Demo task for Start/Trigger auto-submit",
-      "created_at": "2025-12-22T16:30:30"
-    },
-    {
-      "id": "DEMO_GEM",
-      "title": "Demo: Gemini helper task",
-      "owner": "Gemini_3_Pro",
-      "status": "PENDING",
-      "description": "Demo task for Start/Trigger auto-submit",
-      "created_at": "2025-12-22T16:30:30"
     }
   ],
   "detected_chats": [
     {
       "worktree_id": "jal",
       "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/jal",
-      "modified_minutes_ago": 302.7,
+      "modified_minutes_ago": 269.1,
       "agent_name": null,
       "model": null,
       "last_active": "2025-12-22T11:31:41.329446",
       "analytics": {
         "worktree_id": "jal",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/jal",
-        "analyzed_at": "2025-12-22T16:34:26.173789",
+        "analyzed_at": "2025-12-22T16:00:48.512474",
         "git_status": {},
         "file_stats": {
           "total_files": 0,
@@ -296,14 +248,14 @@
     {
       "worktree_id": "rnl",
       "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/rnl",
-      "modified_minutes_ago": 302.7,
+      "modified_minutes_ago": 269.1,
       "agent_name": null,
       "model": null,
       "last_active": "2025-12-22T11:31:41.214822",
       "analytics": {
         "worktree_id": "rnl",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/rnl",
-        "analyzed_at": "2025-12-22T16:34:26.225162",
+        "analyzed_at": "2025-12-22T16:00:48.561130",
         "git_status": {},
         "file_stats": {
           "total_files": 0,
@@ -320,7 +272,7 @@
     {
       "worktree_id": "wju",
       "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/wju",
-      "modified_minutes_ago": 302.8,
+      "modified_minutes_ago": 269.1,
       "agent_name": null,
       "model": null,
       "last_active": "2025-12-22T11:31:41.077930"
@@ -328,14 +280,14 @@
     {
       "worktree_id": "ovc",
       "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/ovc",
-      "modified_minutes_ago": 302.8,
+      "modified_minutes_ago": 269.1,
       "agent_name": null,
       "model": null,
       "last_active": "2025-12-22T11:31:40.963238",
       "analytics": {
         "worktree_id": "ovc",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/ovc",
-        "analyzed_at": "2025-12-22T16:34:26.287357",
+        "analyzed_at": "2025-12-22T16:00:48.610716",
         "git_status": {},
         "file_stats": {
           "total_files": 0,
@@ -352,14 +304,14 @@
     {
       "worktree_id": "mzk",
       "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/mzk",
-      "modified_minutes_ago": 302.8,
+      "modified_minutes_ago": 269.1,
       "agent_name": null,
       "model": null,
       "last_active": "2025-12-22T11:31:40.883368",
       "analytics": {
         "worktree_id": "mzk",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/mzk",
-        "analyzed_at": "2025-12-22T16:34:26.341090",
+        "analyzed_at": "2025-12-22T16:00:48.672884",
         "git_status": {},
         "file_stats": {
           "total_files": 0,
@@ -384,7 +336,7 @@
       "analytics": {
         "worktree_id": "hng",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/hng",
-        "analyzed_at": "2025-12-22T16:34:26.386735",
+        "analyzed_at": "2025-12-22T16:00:48.720407",
         "git_status": {
           "has_changes": true,
           "modified_files": [
@@ -484,7 +436,7 @@
       "analytics": {
         "worktree_id": "agd",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/agd",
-        "analyzed_at": "2025-12-22T16:34:26.451407",
+        "analyzed_at": "2025-12-22T16:00:48.786022",
         "git_status": {
           "has_changes": true,
           "modified_files": [
@@ -563,7 +515,7 @@
       "analytics": {
         "worktree_id": "cqd",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/cqd",
-        "analyzed_at": "2025-12-22T16:34:26.524421",
+        "analyzed_at": "2025-12-22T16:00:48.852287",
         "git_status": {
           "has_changes": true,
           "modified_files": [
@@ -595,7 +547,6 @@
             "README_SETUP.md",
             "backend/",
             "chefai/",
-            "cqd",
             "docs/AGENT_MONITORING.md",
             "docs/COMPLETION_REPORT.md",
             "docs/HOW_MULTI_AGENT_WORKS.md",
@@ -615,12 +566,12 @@
             "test/"
           ],
           "deleted_files": [],
-          "total_changes": 45
+          "total_changes": 44
         },
         "file_stats": {
-          "total_files": 94,
+          "total_files": 93,
           "modified_files": 4,
-          "new_files": 90,
+          "new_files": 89,
           "deleted_files": 0,
           "lines_added": 345,
           "lines_deleted": 0
@@ -651,7 +602,7 @@
       "analytics": {
         "worktree_id": "eld",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/eld",
-        "analyzed_at": "2025-12-22T16:34:26.599989",
+        "analyzed_at": "2025-12-22T16:00:48.913924",
         "git_status": {
           "has_changes": true,
           "modified_files": [
@@ -729,7 +680,7 @@
       "analytics": {
         "worktree_id": "xcm",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/xcm",
-        "analyzed_at": "2025-12-22T16:34:26.708511",
+        "analyzed_at": "2025-12-22T16:00:49.023366",
         "git_status": {
           "has_changes": true,
           "modified_files": [],
@@ -754,14 +705,14 @@
       }
     }
   ],
-  "last_scan": "2025-12-22T16:34:26.129890",
+  "last_scan": "2025-12-22T16:00:48.470228",
   "worktree_analytics": {
-    "last_updated": "2025-12-22T16:34:26.806775",
+    "last_updated": "2025-12-22T16:00:49.087596",
     "analytics": {
       "jal": {
         "worktree_id": "jal",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/jal",
-        "analyzed_at": "2025-12-22T16:34:26.173789",
+        "analyzed_at": "2025-12-22T16:00:48.512474",
         "git_status": {},
         "file_stats": {
           "total_files": 0,
@@ -777,7 +728,7 @@
       "rnl": {
         "worktree_id": "rnl",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/rnl",
-        "analyzed_at": "2025-12-22T16:34:26.225162",
+        "analyzed_at": "2025-12-22T16:00:48.561130",
         "git_status": {},
         "file_stats": {
           "total_files": 0,
@@ -793,7 +744,7 @@
       "ovc": {
         "worktree_id": "ovc",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/ovc",
-        "analyzed_at": "2025-12-22T16:34:26.287357",
+        "analyzed_at": "2025-12-22T16:00:48.610716",
         "git_status": {},
         "file_stats": {
           "total_files": 0,
@@ -809,7 +760,7 @@
       "mzk": {
         "worktree_id": "mzk",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/mzk",
-        "analyzed_at": "2025-12-22T16:34:26.341090",
+        "analyzed_at": "2025-12-22T16:00:48.672884",
         "git_status": {},
         "file_stats": {
           "total_files": 0,
@@ -825,7 +776,7 @@
       "hng": {
         "worktree_id": "hng",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/hng",
-        "analyzed_at": "2025-12-22T16:34:26.386735",
+        "analyzed_at": "2025-12-22T16:00:48.720407",
         "git_status": {
           "has_changes": true,
           "modified_files": [
@@ -916,7 +867,7 @@
       "agd": {
         "worktree_id": "agd",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/agd",
-        "analyzed_at": "2025-12-22T16:34:26.451407",
+        "analyzed_at": "2025-12-22T16:00:48.786022",
         "git_status": {
           "has_changes": true,
           "modified_files": [
@@ -986,7 +937,7 @@
       "cqd": {
         "worktree_id": "cqd",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/cqd",
-        "analyzed_at": "2025-12-22T16:34:26.524421",
+        "analyzed_at": "2025-12-22T16:00:48.852287",
         "git_status": {
           "has_changes": true,
           "modified_files": [
@@ -1018,7 +969,6 @@
             "README_SETUP.md",
             "backend/",
             "chefai/",
-            "cqd",
             "docs/AGENT_MONITORING.md",
             "docs/COMPLETION_REPORT.md",
             "docs/HOW_MULTI_AGENT_WORKS.md",
@@ -1038,12 +988,12 @@
             "test/"
           ],
           "deleted_files": [],
-          "total_changes": 45
+          "total_changes": 44
         },
         "file_stats": {
-          "total_files": 94,
+          "total_files": 93,
           "modified_files": 4,
-          "new_files": 90,
+          "new_files": 89,
           "deleted_files": 0,
           "lines_added": 345,
           "lines_deleted": 0
@@ -1056,7 +1006,7 @@
       "eld": {
         "worktree_id": "eld",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/eld",
-        "analyzed_at": "2025-12-22T16:34:26.599989",
+        "analyzed_at": "2025-12-22T16:00:48.913924",
         "git_status": {
           "has_changes": true,
           "modified_files": [
@@ -1125,7 +1075,7 @@
       "xcm": {
         "worktree_id": "xcm",
         "worktree_path": "/Users/davidtran/.cursor/worktrees/cheftAi/xcm",
-        "analyzed_at": "2025-12-22T16:34:26.708511",
+        "analyzed_at": "2025-12-22T16:00:49.023366",
         "git_status": {
           "has_changes": true,
           "modified_files": [],

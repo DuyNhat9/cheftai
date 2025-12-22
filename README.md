@@ -23,22 +23,32 @@ CheftAi là ứng dụng Android giúp người dùng tìm kiếm công thức n
 
 ## 🤖 Multi-Agent Development
 
-Dự án này sử dụng mô hình **Multi-Agent Collaboration** với MCP (Model Context Protocol) để phối hợp 3 Agent:
+Dự án này sử dụng mô hình **Multi-Agent Collaboration** với MCP (Model Context Protocol) để phối hợp **4 Agent**:
 
-- **Agent Architect:** Thiết kế cấu trúc hệ thống
-- **Agent UI/UX Dev:** Phát triển giao diện Flutter
-- **Agent Backend & AI Dev:** Xử lý logic và tích hợp AI
+- **Agent Architect:** Thiết kế cấu trúc hệ thống, quản lý task board
+- **Agent UI/UX Dev:** Phát triển giao diện Flutter với Material Design 3
+- **Agent Backend & AI Dev:** Xử lý logic, tích hợp Google Gemini API
+- **Agent Testing & QA:** Viết tests, kiểm tra code quality
 
-Xem chi tiết tại [AGENT_ROLES.md](./AGENT_ROLES.md) và [WORKFLOW_DEMO.md](./WORKFLOW_DEMO.md)
+Xem chi tiết tại:
+- [`.mcp/AGENT_ROLES.md`](.mcp/AGENT_ROLES.md) - Vai trò và quy tắc của từng Agent
+- [`.mcp/MCP_USAGE_GUIDE.md`](.mcp/MCP_USAGE_GUIDE.md) - Hướng dẫn sử dụng MCP
+- [`docs/WORKFLOW_DEMO.md`](docs/WORKFLOW_DEMO.md) - Demo workflow Multi-Agent
 
 ## 📂 Cấu trúc dự án
 
 ```
 cheftAi/
-├── shared_state.json      # Trạng thái chung cho Multi-Agent
-├── AGENT_ROLES.md         # Quy tắc phối hợp Agent
-├── WORKFLOW_DEMO.md       # Demo workflow Multi-Agent
-├── schema.md              # Schema database
+├── .mcp/                          # Multi-Agent Collaboration Protocol
+│   ├── shared_state.json          # Trạng thái chung cho 4 Agent
+│   ├── AGENT_ROLES.md             # Vai trò và quy tắc của 4 Agent
+│   └── MCP_USAGE_GUIDE.md         # Hướng dẫn sử dụng MCP
+├── docs/                          # Tài liệu dự án
+│   ├── WORKFLOW_DEMO.md           # Demo workflow Multi-Agent
+│   ├── MCP_GIT_DEMO.md            # Demo MCP Git Automation
+│   ├── PROJECT_STRUCTURE.md       # Cấu trúc thư mục
+│   └── schema.md                  # Schema database
+├── scripts/                       # Utility scripts
 └── [Flutter project structure - coming soon]
 ```
 

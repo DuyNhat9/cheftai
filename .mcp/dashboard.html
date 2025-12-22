@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CheftAi - Multi-Agent Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0a0e1a 0%, #1a1f2e 100%);
+            color: #ffffff;
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            background: linear-gradient(135deg, #137FEC 0%, #8B5CF6 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .status-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px 20px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .status-badge {
+            padding: 6px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: 600;
+        }
+
+        .status-working {
+            background: #10b981;
+            color: white;
+        }
+
+        .status-idle {
+            background: #6b7280;
+            color: white;
+        }
+
+        .status-completed {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .status-pending {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .status-in-progress {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .agents-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .agent-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .agent-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(19, 127, 236, 0.3);
+        }
+
+        .agent-card.working {
+            border-color: #10b981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .agent-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .agent-name {
+            font-size: 1.3em;
+            font-weight: 700;
+        }
+
+        .agent-role {
+            font-size: 0.9em;
+            color: #9dabb9;
+            margin-top: 5px;
+        }
+
+        .agent-task {
+            margin-top: 15px;
+            padding: 12px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            border-left: 3px solid #137FEC;
+        }
+
+        .agent-task-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .agent-task-desc {
+            font-size: 0.85em;
+            color: #9dabb9;
+        }
+
+        .tasks-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 25px;
+            backdrop-filter: blur(10px);
+        }
+
+        .tasks-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .tasks-header h2 {
+            font-size: 1.5em;
+        }
+
+        .task-filters {
+            display: flex;
+            gap: 10px;
+        }
+
+        .filter-btn {
+            padding: 8px 16px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            border-radius: 8px;
+            color: white;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active {
+            background: #137FEC;
+        }
+
+        .task-list {
+            display: grid;
+            gap: 15px;
+        }
+
+        .task-item {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 18px;
+            border-left: 4px solid;
+            transition: all 0.3s;
+        }
+
+        .task-item:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateX(5px);
+        }
+
+        .task-item.completed {
+            border-left-color: #10b981;
+        }
+
+        .task-item.in-progress {
+            border-left-color: #8b5cf6;
+        }
+
+        .task-item.pending {
+            border-left-color: #f59e0b;
+        }
+
+        .task-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .task-id {
+            font-weight: 700;
+            color: #137FEC;
+        }
+
+        .task-title {
+            font-weight: 600;
+            margin: 5px 0;
+        }
+
+        .task-meta {
+            display: flex;
+            gap: 15px;
+            font-size: 0.85em;
+            color: #9dabb9;
+            margin-top: 10px;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+            margin-top: 15px;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #137FEC 0%, #8B5CF6 100%);
+            transition: width 0.5s;
+        }
+
+        .refresh-btn {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: #137FEC;
+            border: none;
+            color: white;
+            font-size: 24px;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(19, 127, 236, 0.4);
+            transition: all 0.3s;
+        }
+
+        .refresh-btn:hover {
+            transform: rotate(180deg) scale(1.1);
+        }
+
+        .auto-refresh {
+            position: fixed;
+            bottom: 100px;
+            right: 30px;
+            padding: 10px 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            font-size: 0.85em;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5em;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+
+        .stat-label {
+            color: #9dabb9;
+            font-size: 0.9em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🍳 CheftAi Multi-Agent Dashboard</h1>
+            <p>Real-time monitoring của 4 Agents</p>
+        </div>
+
+        <div class="status-bar">
+            <div class="status-item">
+                <span>Last Update:</span>
+                <span id="lastUpdate">--</span>
+            </div>
+            <div class="status-item">
+                <span>Auto-refresh:</span>
+                <span id="autoRefreshStatus">ON (5s)</span>
+            </div>
+            <div class="status-item">
+                <span>Project Status:</span>
+                <span id="projectStatus">--</span>
+            </div>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Tasks</div>
+                <div class="stat-value" id="totalTasks">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Completed</div>
+                <div class="stat-value" id="completedTasks">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">In Progress</div>
+                <div class="stat-value" id="inProgressTasks">0</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Pending</div>
+                <div class="stat-value" id="pendingTasks">0</div>
+            </div>
+        </div>
+
+        <div class="agents-grid" id="agentsGrid">
+            <!-- Agents will be rendered here -->
+        </div>
+
+        <div class="tasks-section">
+            <div class="tasks-header">
+                <h2>📋 Task Board</h2>
+                <div class="task-filters">
+                    <button class="filter-btn active" onclick="filterTasks('all')">All</button>
+                    <button class="filter-btn" onclick="filterTasks('completed')">Completed</button>
+                    <button class="filter-btn" onclick="filterTasks('in-progress')">In Progress</button>
+                    <button class="filter-btn" onclick="filterTasks('pending')">Pending</button>
+                </div>
+            </div>
+            <div class="task-list" id="taskList">
+                <!-- Tasks will be rendered here -->
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+            </div>
+        </div>
+    </div>
+
+    <button class="refresh-btn" onclick="loadData()" title="Refresh">🔄</button>
+    <div class="auto-refresh">Auto-refresh: <span id="countdown">5</span>s</div>
+
+    <script>
+        let sharedState = null;
+        let currentFilter = 'all';
+        let countdownInterval = null;
+
+        async function loadData() {
+            try {
+                // Try multiple paths to handle different server setups
+                const paths = [
+                    '.mcp/shared_state.json',
+                    '../.mcp/shared_state.json',
+                    '/.mcp/shared_state.json',
+                    'shared_state.json'
+                ];
+                
+                let response = null;
+                let lastError = null;
+                
+                for (const path of paths) {
+                    try {
+                        response = await fetch(path);
+                        if (response.ok) {
+                            break;
+                        }
+                    } catch (e) {
+                        lastError = e;
+                        continue;
+                    }
+                }
+                
+                if (!response || !response.ok) {
+                    throw new Error('Cannot load shared_state.json. Using local server?');
+                }
+                
+                sharedState = await response.json();
+                renderDashboard();
+                updateLastUpdate();
+            } catch (error) {
+                console.error('Error loading data:', error);
+                // Show helpful error message
+                document.getElementById('agentsGrid').innerHTML = 
+                    `<div style="color: #ef4444; text-align: center; padding: 40px; background: rgba(239, 68, 68, 0.1); border-radius: 12px; border: 2px solid #ef4444;">
+                        <div style="font-size: 2em; margin-bottom: 15px;">❌</div>
+                        <div style="font-weight: 600; margin-bottom: 10px;">Không thể load shared_state.json</div>
+                        <div style="font-size: 0.9em; color: #9dabb9; margin-bottom: 20px;">
+                            ${error.message}
+                        </div>
+                        <div style="font-size: 0.85em; color: #9dabb9;">
+                            <strong>Giải pháp:</strong><br>
+                            1. Dùng local server: <code style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px;">python3 -m http.server 8000</code><br>
+                            2. Mở: <code style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px;">http://localhost:8000/.mcp/dashboard.html</code><br>
+                            3. Hoặc chạy: <code style="background: rgba(255,255,255,0.1); padding: 4px 8px; border-radius: 4px;">./scripts/open_dashboard.sh</code>
+                        </div>
+                    </div>`;
+            }
+        }
+
+        function renderDashboard() {
+            if (!sharedState) return;
+
+            renderAgents();
+            renderTasks();
+            updateStats();
+            updateProjectStatus();
+        }
+
+        function renderAgents() {
+            const agents = sharedState.agents;
+            const agentsGrid = document.getElementById('agentsGrid');
+            
+            agentsGrid.innerHTML = Object.entries(agents).map(([name, agent]) => {
+                const statusClass = agent.status === 'Working' ? 'working' : '';
+                const statusBadge = agent.status === 'Working' 
+                    ? '<span class="status-badge status-working">🔄 Working</span>'
+                    : '<span class="status-badge status-idle">💤 Idle</span>';
+                
+                const taskHtml = agent.current_task 
+                    ? `<div class="agent-task">
+                        <div class="agent-task-title">📌 ${agent.current_task}</div>
+                        ${agent.role ? `<div class="agent-task-desc">${agent.role}</div>` : ''}
+                       </div>`
+                    : '<div class="agent-task"><div class="agent-task-desc">No active task</div></div>';
+
+                return `
+                    <div class="agent-card ${statusClass}">
+                        <div class="agent-header">
+                            <div>
+                                <div class="agent-name">${name}</div>
+                                ${agent.role ? `<div class="agent-role">${agent.role}</div>` : ''}
+                            </div>
+                            ${statusBadge}
+                        </div>
+                        ${taskHtml}
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function renderTasks() {
+            const tasks = sharedState.task_board || [];
+            const taskList = document.getElementById('taskList');
+            
+            let filteredTasks = tasks;
+            if (currentFilter !== 'all') {
+                filteredTasks = tasks.filter(task => {
+                    if (currentFilter === 'completed') return task.status === 'COMPLETED';
+                    if (currentFilter === 'in-progress') return task.status === 'IN_PROGRESS';
+                    if (currentFilter === 'pending') return task.status === 'PENDING';
+                    return true;
+                });
+            }
+
+            taskList.innerHTML = filteredTasks.map(task => {
+                const statusClass = task.status.toLowerCase().replace('_', '-');
+                const statusBadge = {
+                    'COMPLETED': '<span class="status-badge status-completed">✅ Completed</span>',
+                    'IN_PROGRESS': '<span class="status-badge status-in-progress">🔄 In Progress</span>',
+                    'PENDING': '<span class="status-badge status-pending">⏳ Pending</span>'
+                }[task.status] || '';
+
+                const dependencyHtml = task.dependency 
+                    ? `<span>🔗 Depends on: ${task.dependency}</span>`
+                    : '';
+
+                const filesHtml = task.completed_files 
+                    ? `<div style="margin-top: 10px; font-size: 0.85em; color: #9dabb9;">
+                        <strong>Files:</strong> ${task.completed_files.length} files created
+                       </div>`
+                    : '';
+
+                return `
+                    <div class="task-item ${statusClass}">
+                        <div class="task-header">
+                            <span class="task-id">${task.id}</span>
+                            ${statusBadge}
+                        </div>
+                        <div class="task-title">${task.title}</div>
+                        ${task.description ? `<div style="color: #9dabb9; font-size: 0.9em; margin-top: 8px;">${task.description}</div>` : ''}
+                        <div class="task-meta">
+                            <span>👤 ${task.owner}</span>
+                            ${dependencyHtml}
+                        </div>
+                        ${filesHtml}
+                    </div>
+                `;
+            }).join('');
+
+            // Update filter buttons
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event?.target?.classList.add('active');
+        }
+
+        function filterTasks(filter) {
+            currentFilter = filter;
+            renderTasks();
+        }
+
+        function updateStats() {
+            const tasks = sharedState.task_board || [];
+            const total = tasks.length;
+            const completed = tasks.filter(t => t.status === 'COMPLETED').length;
+            const inProgress = tasks.filter(t => t.status === 'IN_PROGRESS').length;
+            const pending = tasks.filter(t => t.status === 'PENDING').length;
+
+            document.getElementById('totalTasks').textContent = total;
+            document.getElementById('completedTasks').textContent = completed;
+            document.getElementById('inProgressTasks').textContent = inProgress;
+            document.getElementById('pendingTasks').textContent = pending;
+
+            // Update progress bar
+            const progress = total > 0 ? (completed / total) * 100 : 0;
+            document.getElementById('progressFill').style.width = `${progress}%`;
+        }
+
+        function updateProjectStatus() {
+            const status = sharedState.project_info?.status || 'Unknown';
+            document.getElementById('projectStatus').textContent = status;
+        }
+
+        function updateLastUpdate() {
+            const now = new Date();
+            document.getElementById('lastUpdate').textContent = 
+                now.toLocaleTimeString('vi-VN');
+        }
+
+        // Auto-refresh every 5 seconds
+        let countdown = 5;
+        function startAutoRefresh() {
+            countdownInterval = setInterval(() => {
+                countdown--;
+                document.getElementById('countdown').textContent = countdown;
+                
+                if (countdown <= 0) {
+                    loadData();
+                    countdown = 5;
+                }
+            }, 1000);
+        }
+
+        // Initial load
+        loadData();
+        startAutoRefresh();
+
+        // Make filterTasks available globally
+        window.filterTasks = filterTasks;
+    </script>
+</body>
+</html>
+

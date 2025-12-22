@@ -1,0 +1,3 @@
+# Directory để chứa pending prompts cho từng agent
+# Mỗi agent có file riêng: {AgentName}.md
+

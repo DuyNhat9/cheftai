@@ -1,0 +1,33 @@
+{
+  "Architect": {
+    "port": 8002,
+    "name": "Architect",
+    "server_file": "agents/architect_server.py"
+  },
+  "Backend_AI_Dev": {
+    "port": 8003,
+    "name": "Backend_AI_Dev",
+    "server_file": "agents/backend_server.py"
+  },
+  "UI_UX_Dev": {
+    "port": 8004,
+    "name": "UI_UX_Dev",
+    "server_file": "agents/ui_server.py"
+  },
+  "Testing_QA": {
+    "port": 8005,
+    "name": "Testing_QA",
+    "server_file": "agents/qa_server.py"
+  },
+  "Supervisor": {
+    "port": 8006,
+    "name": "Supervisor",
+    "server_file": "agents/supervisor_server.py"
+  },
+  "Gemini_3_Pro": {
+    "port": 8007,
+    "name": "Gemini_3_Pro",
+    "server_file": "agents/gemini_server.py"
+  }
+}
+

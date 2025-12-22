@@ -1,0 +1,18 @@
+# Auto-Approved Mode Transitions for 4-Agent System
+# Copy và paste vào Cursor Settings > Auto-Approved Mode Transitions
+
+architect->backend
+architect->backend_ai_dev
+architect->plan
+backend->ui
+backend_ai_dev->ui_ux_dev
+backend->frontend
+backend->testing
+backend_ai_dev->testing_qa
+ui->testing
+ui_ux_dev->testing_qa
+frontend->testing
+testing->architect
+testing_qa->architect
+testing->plan
+

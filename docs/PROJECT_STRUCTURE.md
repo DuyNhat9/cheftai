@@ -12,8 +12,9 @@ cheftAi/
 ├── 📄 .gitignore                   # Git ignore rules
 │
 ├── 🤖 .mcp/                        # Multi-Agent Collaboration Protocol
-│   ├── shared_state.json           # Trạng thái chung cho các Agent
-│   └── AGENT_ROLES.md              # Quy tắc và vai trò của từng Agent
+│   ├── shared_state.json           # Trạng thái chung cho 4 Agent
+│   ├── AGENT_ROLES.md              # Vai trò và quy tắc của 4 Agent
+│   └── MCP_USAGE_GUIDE.md          # Hướng dẫn sử dụng MCP cho các Agent
 │
 ├── 📚 docs/                        # Tài liệu dự án
 │   ├── WORKFLOW_DEMO.md            # Demo workflow Multi-Agent
@@ -38,10 +39,17 @@ cheftAi/
 **Mục đích:** Chứa các file liên quan đến hệ thống Multi-Agent Collaboration
 
 **Files:**
-- `shared_state.json`: File trạng thái chung, các Agent đọc/ghi để đồng bộ công việc
-- `AGENT_ROLES.md`: Định nghĩa vai trò và quy tắc của từng Agent
+- `shared_state.json`: File trạng thái chung, 4 Agent đọc/ghi để đồng bộ công việc. Chứa:
+  - `project_info`: Thông tin dự án
+  - `shared_memory`: Constants, tech stack, project structure
+  - `agents`: Trạng thái của 4 Agent (Architect, UI_UX_Dev, Backend_AI_Dev, Testing_QA)
+  - `task_board`: Danh sách tasks và dependencies
+- `AGENT_ROLES.md`: Định nghĩa vai trò, nhiệm vụ và quy tắc của 4 Agent
+- `MCP_USAGE_GUIDE.md`: Hướng dẫn chi tiết cách sử dụng MCP tools, workflow, và best practices
 
-**Lưu ý:** Các Agent phải đọc file này trước khi bắt đầu làm việc.
+**Lưu ý:** 
+- **TẤT CẢ 4 Agent PHẢI đọc `shared_state.json` TRƯỚC khi bắt đầu làm việc**
+- Tuân thủ giao thức MCP: READ BEFORE ACT, UPDATE ON SUCCESS, LOCKING
 
 ---
 
@@ -105,4 +113,14 @@ test/                  # Unit tests
 
 **Last Updated:** 2025-12-17
 **Maintained by:** Agent Architect
+
+
+
+
+
+
+
+
+
+
 

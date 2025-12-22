@@ -1,0 +1,16 @@
+{
+  "cursor_cloud_api": {
+    "enabled": false,
+    "api_key": "",
+    "api_base": "https://api.cursor.com/v0",
+    "poll_interval": 10,
+    "max_poll_attempts": 60,
+    "note": "Cloud API không khả dụng - sử dụng local method"
+  },
+  "local_fallback": {
+    "enabled": true,
+    "auto_open_windows": true,
+    "open_windows_script": ".mcp/open_all_agent_windows.py"
+  }
+}
+
